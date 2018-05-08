@@ -6,7 +6,8 @@ $color3: #B8B8B8;
 $color4: #FFCD41;
 $color5: #2092A9;
 
-body {
+
+html {
     background-color: lighten($color1, 10%);
 }
 
@@ -20,6 +21,11 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+
+    .delete {
+        margin: 15px;
+
+    }
 }
 
 .weather-card {
@@ -40,8 +46,8 @@ body {
         font-weight:300;
         font-size:80px;
         color: $color3;
-        bottom: 0;
-        left: 35px;
+        bottom: 25px;
+        left: 30px;
         opacity: 0;
         transform: translateX(150px);
         animation: title-appear 500ms ease-out 500ms forwards;
@@ -53,7 +59,7 @@ body {
         font-weight:300;
         font-size:28px;
         color: lighten($color3, 10%);
-        bottom: 0;
+        bottom: 10px;
         left: 35px;
         animation: title-appear 1s ease-out 500ms forwards;
     }
@@ -177,4 +183,10 @@ body {
     }
 }
 
+
+.search-bar {
+    display: flex;
+    padding: 20px;
+    justify-content: center;
+}
 

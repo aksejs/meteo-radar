@@ -20,13 +20,24 @@ class SearchWeather extends Component {
     }
     render() {
         return(
-        <form onSubmit={this.onFormSubmit}>
-            <input type='text' 
-                   name='city' 
-                   placeholder='City..' 
-                   onChange={this.onInputChange}/>
-            <button type='submit'>Add!</button>
-        </form>)
+        <div className="search-bar"> 
+            <div className="field has-addons">
+                <div className="control" onSubmit={this.onFormSubmit}>
+                <input className="input" 
+                        type="text" 
+                        name='city'
+                        placeholder="Miami..." 
+                        onChange={this.onInputChange}/>
+                </div>
+                <div className="control">
+                <a className="button is-info"
+                    onClick={this.onFormSubmit}>
+                    Add city
+                </a>
+                </div>
+            </div>
+        </div>
+        )
     }   
 }
 

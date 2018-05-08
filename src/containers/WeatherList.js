@@ -17,7 +17,8 @@ class WeatherList extends Component {
                 id={item.id}
                 name={item.name} 
                 temp={item.main.temp} 
-                onDelete={this.onCardDelete} />
+                onDelete={this.onCardDelete} 
+                rain={item.weather["0"].main}/>
         ))
 
         
@@ -31,7 +32,7 @@ class WeatherList extends Component {
         console.log(this.props)
         
         return (
-        <div>
+        <div className="weather-wrapper">
             {this.renderCards()}
         </div>
         )

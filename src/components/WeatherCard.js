@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
+import 'bulma';
+
 
 function WeatherCard(props) {
+    console.log('Rain', props.rain)
+    const weathericon = (props.rain === "Clear") ? "weather-icon sun" : "weather-icon cloud";
     return (
-        <div class="weather-wrapper">
             <div class="weather-card">
-                <div class="weather-icon cloud"></div>
+                <div class={weathericon}></div>
                 <h1>{props.temp.toFixed(1)}º</h1>
                 <p>{props.name}</p>
-                <button onClick={() => {props.onDelete(props.id)}}></button>
+                <button className="delete" onClick={() => {props.onDelete(props.id)}}></button>
             </div>
-        </div>
         )
 }
 

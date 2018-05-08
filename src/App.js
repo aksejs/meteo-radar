@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import './App.css';
+import 'bulma';
 import WeatherList from './containers/WeatherList';
 import SearchWeather from './containers/SearchWeather';
 
