@@ -6,9 +6,6 @@ import WeatherCard from '../components/WeatherCard';
 class WeatherList extends Component {
 
 
-    componentDidMount() {
-        this.props.fetchWeather("Paris");
-    }
 
     renderCards() {
         return this.props.weather.map(item => (

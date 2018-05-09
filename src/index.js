@@ -4,6 +4,7 @@ import { createStore, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 import ReduxPromise from 'redux-promise'
 import reducers from './reducers'
+import { loadState, saveState } from './localStorage';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
@@ -12,7 +13,14 @@ const finalCreateStore = compose(applyMiddleware(ReduxPromise),
 window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )(createStore);
 
-const store = finalCreateStore(reducers);
+const persistedState = loadState();
+const store = finalCreateStore(reducers, persistedState);
+
+store.subscribe(() => {
+  saveState({
+    weather: store.getState().weather
+  });
+});
 
 ReactDOM.render(
     <Provider store={store}>
