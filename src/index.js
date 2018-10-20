@@ -7,7 +7,6 @@ import reducers from './reducers'
 import { loadState, saveState } from './localStorage';
 import './index.css';
 import App from './App';
-import registerServiceWorker from './registerServiceWorker';
 
 const finalCreateStore = compose(applyMiddleware(ReduxPromise),
 window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()

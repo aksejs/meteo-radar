@@ -1,4 +1,8 @@
+/* eslint react/prop-types: 0 */
 {
     "extends": "airbnb",
-    "parser": "babel-eslint"
+    "parser": "babel-eslint",
+    "rules": {
+      "react/prop-types": 0
+    }
   }

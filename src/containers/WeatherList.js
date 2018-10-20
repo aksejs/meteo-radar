@@ -1,43 +1,44 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {fetchWeather, deleteCard} from '../actions';
 import WeatherCard from '../components/WeatherCard';
+import { fetchWeather, deleteCard } from '../actions';
 
 class WeatherList extends Component {
+  componentDidMount() {
+    this.props.dispatch(fetchWeather('Paris'));
+  }
 
-
+    onCardDelete = (id) => {
+      this.props.dispatch(deleteCard(id));
+    };
 
     renderCards() {
-        return this.props.weather.map(item => (
-            <WeatherCard 
-                key={item.id}
-                id={item.id}
-                name={item.name} 
-                temp={item.main.temp} 
-                onDelete={this.onCardDelete} 
-                rain={item.weather["0"].main}/>
-        ))
-
-        
-    }
-
-    onCardDelete = id => {
-        this.props.deleteCard(id);
+      const { weather } = this.props;
+      console.log(weather);
+      return weather.length && weather.map(({
+        id, name, main: { temp }, weather,
+      }) => (
+        <WeatherCard
+          key={id}
+          id={id}
+          name={name}
+          temp={temp}
+          onDelete={this.onCardDelete}
+          rain={weather['0'].main}
+        />
+      ));
     }
 
     render() {
-        console.log(this.props)
-        
-        return (
+      console.log(this.props);
+      return (
         <div className="weather-wrapper">
-            {this.renderCards()}
+          {this.renderCards()}
         </div>
-        )
+      );
     }
 }
 
-function mapStateToProps({ weather }) {
-    return { weather };
-}
-
-export default connect(mapStateToProps, {fetchWeather, deleteCard})(WeatherList);
+export default connect(({ weather }) => ({
+  weather,
+}))(WeatherList);

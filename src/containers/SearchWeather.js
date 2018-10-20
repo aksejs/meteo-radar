@@ -8,38 +8,43 @@ class SearchWeather extends Component {
         this.state = { term: ''};
     }
 
-    onInputChange = e => {
-        this.setState({ term: e.target.value });
-    }
+    onInputChange = ({ target: { value } }) => {
+      this.setState({ term: value });
+    };
 
-    onFormSubmit = e => {
-        e.preventDefault();
-    
-        this.props.fetchWeather(this.state.term);
-        this.setState({ term: '' })
-    }
+    onFormSubmit = (e) => {
+      e.preventDefault();
+      const { term } = this.state;
+      this.props.fetchWeather(term);
+      this.setState({ term: '' });
+    };
+
     render() {
-        return(
-        <div className="search-bar"> 
-            <div className="field has-addons">
-                <div className="control" onSubmit={this.onFormSubmit}>
-                <input className="input" 
-                        type="text" 
-                        name='city'
-                        placeholder="Miami..." 
-                        onChange={this.onInputChange}/>
-                </div>
-                <div className="control">
-                <a className="button is-info"
-                    onClick={this.onFormSubmit}>
-                    Add city
-                </a>
-                </div>
+      return (
+        <div className="search-bar">
+          <div className="field has-addons">
+            <div className="control" onSubmit={this.onFormSubmit}>
+              <input
+                className="input"
+                type="text"
+                name="city"
+                placeholder="Miami..."
+                onChange={this.onInputChange}
+              />
             </div>
+            <div className="control">
+              <a
+                className="button is-info"
+                onClick={this.onFormSubmit}
+              >
+                    Add city
+              </a>
+            </div>
+          </div>
         </div>
-        )
-    }   
+      );
+    }
 }
 
 
-export default connect(null, {fetchWeather})(SearchWeather);
+export default connect(null, { fetchWeather })(SearchWeather);
